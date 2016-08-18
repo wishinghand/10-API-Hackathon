@@ -31,7 +31,19 @@
             <h2 class="content">Select which types of places you would like to see...</h2>
             <!--'', '', '', '', '', '', '', '', '', '', 'movie_theater', 'museum', 'night_club', 'park', 'restaurant', 'shopping_mall', 'spa', 'stadium', 'zoo'];
         var serious_types = ['airport', 'atm', 'bank', 'car_repair', 'city_hall', 'courthouse', 'dentist', 'doctor', 'electrician', 'embassy', 'fire_station', 'gas_station', 'grocery_or_supermarket', 'gym', 'hardware_store', 'hospital', 'laundry', 'lawyer', 'library', 'locksmith', 'local_government_office', 'lodging', 'painter', 'parking', 'pharmacy', 'plumber', 'police', 'post_office', 'storage', 'train_station', 'transit_station', 'veterinary_care'];-->
-            <input value="amusement_park" type="checkbox" class="checkbox">
+            <h2>Fun Stuff</h2>
+            <p class="control" ng-repeat="funThing in app.fun_types">
+                <input type="checkbox" id="funThing">
+                <label for="funThing">{{funThing.split("_").join(" ")}}</label>
+            </p>
+
+            <h2>Serious Stuff</h2>
+            <p class="control" ng-repeat="seriousThing in app.serious_types">
+                <input type="checkbox" id="seriousThing">
+                <label for="funThing">{{seriousThing.split("_").join(" ")}}</label>
+            </p>
+
+            <!-- <input value="amusement_park" type="checkbox" class="checkbox">
             <label>Amusement park</label>
             <br>
             <input value="aquarium" type="checkbox" class="checkbox">
@@ -93,7 +105,7 @@
                     <option value="50">25000</option>
                     <option value="50">50000</option>
                 </select>
-            </p>
+            </p> -->
         </form>
     </div>
     <div id="map" class="box" ng-init="app.init()">
