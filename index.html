@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="app">
 
 <head>
     <meta charset="UTF-8">
@@ -17,12 +17,13 @@
     <br>
     <form>
         <p class="control">
-            <input class="input is-large" type="text" ng-model="addressInput" placeholder="Address" autofocus>
+            <input class="input is-large" type="text" ng-model="addressInput" placeholder="Address" g-places-autocomplete autofocus>
         </p>
         <p class="control">
             <button class="button is-primary is large">Go!</button>
         </p>
     </form>
+    <script src="https://maps.googleapis.com/maps/api/js?libraries=places"></script>
     <!-- inject:js -->
     <script src="build/build.js"></script>
     <!-- endinject -->
