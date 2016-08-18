@@ -11,20 +11,20 @@
 
 <body ng-controller="appCtrl as app">
     <main>
-        <div class="box">
-            <h1 class="content heading is-medium">What's up Brah?</h1></div>
+        <div class="mySpecialClass box">
+            <div class="columns">
+                <div class="column">
+                    <h1 class="content heading is-medium">What's up Brah?</h1>
+                </div>
+                <div class="column">
+                    <div align="right">
+                        <i class="icon fa fa-bars"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
     </main>
     <br>
-    <div class="box" ng-controller="addressInputCtrl as search">
-        <form class="control is-grouped">
-            <p class="control is-expanded">
-                <input class="input is-medium" type="text" ng-model="search.addressInput" placeholder="Address" g-places-autocomplete autofocus>
-            </p>
-            <p class="control">
-                <button class="button is-primary is-medium" ng-click="search.searchForThingsToDo()">Search</button>
-            </p>
-        </form>
-    </div>
     <div class="box">
         <form>
             <h1 class="content is-medium">Settings</h1>
@@ -96,6 +96,16 @@
             </p>
         </form>
     </div>
+    <div class="box" ng-controller="addressInputCtrl as search">
+        <form class="control is-grouped">
+            <p class="control is-expanded">
+                <input class="input is-medium" type="text" ng-model="search.addressInput" placeholder="Address" g-places-autocomplete autofocus>
+            </p>
+            <p class="control">
+                <button class="button is-primary is-medium" ng-click="search.searchForThingsToDo()">Search</button>
+            </p>
+        </form>
+    </div>
     <div id="map" class="box" ng-init="app.init()">
         <!--Map Container-->
     </div>
@@ -105,13 +115,14 @@
     <!-- endinject -->
 </body>
 <footer class="footer">
-<div class="content has-text-centered">
-<strong>
+    <div class="content has-text-centered">
+        <strong>
 	<a href='https://github.com/wishinghand/10-API-Hackathon.git'>What’s Up?</a>
 </strong> was created by
-<a href="http://qobbler.com">Jason Land</a>,
-<a href="https://github.com/comrww">Ryan Wilson</a>, and
-<a href="https://github.com/rdowdy">Ryan Dowdy.</a>
-</div>
+        <a href="http://qobbler.com">Jason Land</a>,
+        <a href="https://github.com/comrww">Ryan Wilson</a>, and
+        <a href="https://github.com/rdowdy">Ryan Dowdy.</a>
+    </div>
 </footer>
+
 </html>

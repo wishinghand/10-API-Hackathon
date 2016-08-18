@@ -3,5 +3,9 @@
 // or
 // $blue: #141bff
 
+.mySpecialClass {
+	display: inline;
+}
+
 // this line goes last
 @import "../../node_modules/bulma/bulma.sass"
