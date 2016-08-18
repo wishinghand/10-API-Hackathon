@@ -1,0 +1,25 @@
+{
+  "name": "whos-my-rep",
+  "version": "1.0.0",
+  "description": "A web-app that takes in an address and returns federal, state, and local elected officials for that address.",
+  "main": "./src/app.module.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wishinghand/10-API-Hackathon.git"
+  },
+  "keywords": [
+    "api",
+    "government",
+    "officials",
+    "address"
+  ],
+  "author": "Jason Land, Ryan Dowdy, Ryan Wilson",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/wishinghand/10-API-Hackathon/issues"
+  },
+  "homepage": "https://github.com/wishinghand/10-API-Hackathon"
+}
