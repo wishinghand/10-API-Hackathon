@@ -45,7 +45,8 @@
                     }, {
                         elementType: 'labels',
                         stylers: [{ visibility: 'off' }]
-                    }]
+                    }],
+                    scrollwheel: false
                 };
             } else {
                 return {
@@ -56,7 +57,8 @@
                     }, {
                         elementType: 'labels',
                         stylers: [{ visibility: 'off' }]
-                    }]
+                    }],
+                    scrollwheel: false
                 };
             }
         }
