@@ -5,10 +5,10 @@
         .module('app')
         .factory('GoogleAPIFactory', GoogleAPIFactory);
 
-    GoogleAPIFactory.$inject = ['$q'];
+    GoogleAPIFactory.$inject = [];
 
     /* @ngInject */
-    function GoogleAPIFactory($q) {
+    function GoogleAPIFactory() {
         var map;
         var infoWindow;
         var service;
@@ -26,34 +26,47 @@
         ////////////////
 
         function initMap(){
-            var defer = $q.defer();
+            map = new google.maps.Map(document.getElementById('map'), mapStypes());
 
-            map = new google.maps.Map(document.getElementById('map'), {
-                center: {lat: -33.867, lng: 151.206},
-                zoom: 15,
-                styles: [{
-                    stylers: [{ visibility: 'simplified' }]
-                }, {
-                    elementType: 'labels',
-                    stylers: [{ visibility: 'off' }]
-                }]
-            });
+            function mapStyles(){
+                if(coord){
+                    return {
+                        center: {lat: -33.867, lng: 151.206},
+                        zoom: 15,
+                        styles: [{
+                            stylers: [{ visibility: 'simplified' }]
+                        }, {
+                            elementType: 'labels',
+                            stylers: [{ visibility: 'off' }]
+                        }]
+                    }
+                }else{
+                    return {
+                        center: {lat: 32.7157, lng: -117.1611},
+                        zoom: 15,
+                        styles: [{
+                            stylers: [{ visibility: 'simplified' }]
+                        }, {
+                            elementType: 'labels',
+                            stylers: [{ visibility: 'off' }]
+                        }]
+                    }
+                }
+            }
 
             infoWindow = new google.maps.InfoWindow();
             service = new google.maps.places.PlacesService(map);
 
-              // The idle event is a debounced event, so we can query & listen without throwing too many requests at the server.
-              map.addListener('idle', performSearch);
+            // The idle event is a debounced event, so we can query & listen without throwing too many requests at the server.
+            map.addListener('idle', performSearch);
         }
 
         function getGooglePlaces() {
-            var defer = $q.defer();
             //perform search
         }
 
         function placeMarkers(){
             //addMarkers
-            var defer = $q.defer();
         }
     }
 })();
