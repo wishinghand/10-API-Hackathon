@@ -26,11 +26,16 @@ gulp.task('concatJs', function(){
 
 /**CSS gulp tasks*****************************************************************/
 gulp.task('compileSass', function(){
-    return gulp.src(['node_modules/angular-toastr/dist/angular-toastr.css', 'src/css/vital.css', 'node_modules/animate.css/animate.css', './src/css/*.scss', './src/css/*.css'])
+    return gulp.src(['node_modules/angular-toastr/dist/angular-toastr.css', 'src/css/vital.css', 'node_modules/animate.css/animate.css', 'node_modules/font-awesome/css/font-awesome.min.css','./src/css/*.scss', './src/css/*.css'])
     .pipe(sass())
     //and concatenates them
     .pipe(concat('build.css'))
-    .pipe(gulp.dest('./build/'))
+    .pipe(gulp.dest('./build/'));
+});
+
+gulp.task('copyFonts', function() {
+    return gulp.src(['node_modules/font-awesome/fonts/*'])
+            .pipe(gulp.dest('./fonts'));
 });
 
 gulp.task('inject', function(){
@@ -80,7 +85,7 @@ gulp.task('uncss', function() {
 });
 
 gulp.task('serve', function(done) {
-    runSequence('clean', 'concatJs', 'compileSass', 'inject', 'connect', 'watch', function() {
+    runSequence('clean', 'concatJs', 'compileSass', 'copyFonts', 'inject', 'connect', 'watch', function() {
         done();
     });
 });
