@@ -11,7 +11,10 @@
     function appCtrl(GoogleAPIFactory) {
         /*jshint validthis: true */
         var vm = this;
+        //this function sets the map on page load
         vm.setMap = setMap;
+        //this function is run when user searches for their address
+        vm.getMap = getMap;
         vm.coordinates = [];
         vm.title = 'appCtrl';
 
