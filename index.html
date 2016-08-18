@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Who's My Rep?</title>
+    <title>What's Up?</title>
     <!-- inject:css -->
     <link rel="stylesheet" href="build/build.css">
     <!-- endinject -->
@@ -12,17 +12,22 @@
 <body>
     <main>
         <div class="box">
-            <h1>Who's My Rep?</h1></div>
+            <h1 class="content heading is-medium">What's up?</h1></div>
     </main>
     <br>
-    <form>
-        <p class="control">
-            <input class="input is-large" type="text" ng-model="addressInput" placeholder="Address" g-places-autocomplete autofocus>
-        </p>
-        <p class="control">
-            <button class="button is-primary is large">Go!</button>
-        </p>
-    </form>
+    <div class="box">
+        <form class="control is-grouped">
+            <p class="control is-expanded">
+                <input class="input is-medium" type="text" ng-model="addressInput" placeholder="Address" g-places-autocomplete autofocus>
+            </p>
+            <p class="control">
+                <button class="button is-primary is-medium">Search</button>
+            </p>
+        </form>
+    </div>
+    <div class="box">
+    	
+    </div>
     <script src="https://maps.googleapis.com/maps/api/js?libraries=places"></script>
     <!-- inject:js -->
     <script src="build/build.js"></script>
