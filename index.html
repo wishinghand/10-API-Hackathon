@@ -31,35 +31,34 @@ $(window).load(function() {
         <form>
             <h1 class="content is-large">Settings</h1>
             <h2 class="content">Select which types of places you would like to see...</h2>
-            
             <div class="columns">
-            <div class="column">
-            <h2 class="content is-medium">Serious Stuff</h2>
-            <p class="control" ng-repeat="seriousThing in app.serious_types">
-                <input type="checkbox" id="seriousThing">
-                <label for="funThing">{{seriousThing.split("_").join(" ")}}</label>
-            </p>
-            </div>
-           	<div class="column">
-            <h2 class="content is-medium">Fun Stuff</h2>
-            <p class="control" ng-repeat="funThing in app.fun_types">
-                <input type="checkbox" id="funThing">
-                <label for="funThing">{{funThing.split("_").join(" ")}}</label>
-            </p>
-            </div>
-            <div class="column">
-            <h2 class="content">Select a search radius (meters)...</h2>
-            <p class="control select">
-                <select class="is-medium" type="text" placeholder="50000 Meters">
-                    <option value="5">10</option>
-                    <option value="50">100</option>
-                    <option value="50">1000</option>
-                    <option value="50">10000</option>
-                    <option value="50">25000</option>
-                    <option value="50">50000</option>
-                </select>
-            </p>
-            </div>
+                <div class="column">
+                    <h2 class="content is-medium">Serious Stuff</h2>
+                    <p class="control" ng-repeat="seriousThing in app.serious_types">
+                        <input type="checkbox" id="seriousThing">
+                        <label for="funThing">{{seriousThing.split("_").join(" ")}}</label>
+                    </p>
+                </div>
+                <div class="column">
+                    <h2 class="content is-medium">Fun Stuff</h2>
+                    <p class="control" ng-repeat="funThing in app.fun_types">
+                        <input type="checkbox" id="funThing">
+                        <label for="funThing">{{funThing.split("_").join(" ")}}</label>
+                    </p>
+                </div>
+                <div class="column">
+                    <h2 class="content">Select a search radius (meters)...</h2>
+                    <p class="control select">
+                        <select class="is-medium" type="text" placeholder="50000 Meters">
+                            <option value="5">10</option>
+                            <option value="50">100</option>
+                            <option value="50">1000</option>
+                            <option value="50">10000</option>
+                            <option value="50">25000</option>
+                            <option value="50">50000</option>
+                        </select>
+                    </p>
+                </div>
             </div>
             <!-- <input value="amusement_park" type="checkbox" class="checkbox">
             <label>Amusement park</label>
@@ -132,7 +131,7 @@ $(window).load(function() {
     <footer class="footer">
         <div class="content has-text-centered">
             <strong>
-            	<a href='https://github.com/wishinghand/10-API-Hackathon.git'>What’s Up?</a>
+                <a href='https://github.com/wishinghand/10-API-Hackathon.git'>What’s Up?</a>
             </strong> was created by
             <a href="http://qobbler.com">Jason Land</a>,
             <a href="https://github.com/comrww">Ryan Wilson</a>, and
@@ -144,4 +143,5 @@ $(window).load(function() {
     <script src="build/build.js"></script>
     <!-- endinject -->
 </body>
+
 </html>
