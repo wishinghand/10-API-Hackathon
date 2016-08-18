@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="app">
 <head>
     <meta charset="UTF-8">
     <title>Who's My Rep?</title>
@@ -13,12 +13,14 @@
     </main>
     <form>
         <p class="control">
-            <input class="input" type="text" ng-model="addressInput" placeholder="Address">
+            <input class="input" type="text" ng-model="addressInput" g-places-autocomplete placeholder="Address">
         </p>
         <p class="control">
             <button class="button">Go!</button>
         </p>
     </form>
+
+    <script src="https://maps.googleapis.com/maps/api/js?libraries=places"></script>
 
     <!-- inject:js -->
     <script src="build/build.js"></script>
