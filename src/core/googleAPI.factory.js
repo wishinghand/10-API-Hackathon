@@ -5,10 +5,10 @@
         .module('app')
         .factory('GoogleAPIFactory', GoogleAPIFactory);
 
-    GoogleAPIFactory.$inject = [];
+    GoogleAPIFactory.$inject = ['coord'];
 
     /* @ngInject */
-    function GoogleAPIFactory() {
+    function GoogleAPIFactory(coord) {
         var map;
         var infoWindow;
         var service;
@@ -26,7 +26,7 @@
         ////////////////
 
         function initMap(){
-            map = new google.maps.Map(document.getElementById('map'), mapStypes());
+            map = new google.maps.Map(document.getElementById('map'), mapStyles());
 
             function mapStyles(){
                 if(coord){
@@ -59,6 +59,10 @@
 
             // The idle event is a debounced event, so we can query & listen without throwing too many requests at the server.
             map.addListener('idle', performSearch);
+        }
+
+        function performSearch() {
+
         }
 
         function getGooglePlaces() {
