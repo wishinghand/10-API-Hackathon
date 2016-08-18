@@ -2,7 +2,7 @@
   "name": "whos-my-rep",
   "version": "1.0.0",
   "description": "A web-app that takes in an address and returns federal, state, and local elected officials for that address.",
-  "main": "./src/app.module.js",
+  "main": "./src/core/app.module.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
