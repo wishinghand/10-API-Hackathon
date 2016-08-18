@@ -5,10 +5,10 @@
         .module('app')
         .factory('GoogleAPIFactory', GoogleAPIFactory);
 
-    GoogleAPIFactory.$inject = ['coord'];
+    GoogleAPIFactory.$inject = [];
 
     /* @ngInject */
-    function GoogleAPIFactory(coord) {
+    function GoogleAPIFactory() {
         var map;
         var infoWindow;
         var service;
@@ -25,35 +25,8 @@
 
         ////////////////
 
-        function initMap(){
-            map = new google.maps.Map(document.getElementById('map'), mapStyles());
-
-            function mapStyles(){
-                if(coord){
-                    return {
-                        center: {lat: -33.867, lng: 151.206},
-                        zoom: 15,
-                        styles: [{
-                            stylers: [{ visibility: 'simplified' }]
-                        }, {
-                            elementType: 'labels',
-                            stylers: [{ visibility: 'off' }]
-                        }]
-                    }
-                }else{
-                    return {
-                        center: {lat: 32.7157, lng: -117.1611},
-                        zoom: 15,
-                        styles: [{
-                            stylers: [{ visibility: 'simplified' }]
-                        }, {
-                            elementType: 'labels',
-                            stylers: [{ visibility: 'off' }]
-                        }]
-                    }
-                }
-            }
-
+        function initMap(coord) {
+            map = new google.maps.Map(document.getElementById('map'), mapStyles(coord));
             infoWindow = new google.maps.InfoWindow();
             service = new google.maps.places.PlacesService(map);
 
@@ -61,15 +34,80 @@
             map.addListener('idle', performSearch);
         }
 
-        function performSearch() {
-
+        function mapStyles(coord) {
+            if (coord) {
+                return {
+                    // investigate { lat: coord[0], lng: coord[1]}
+                    center: new google.maps.LatLng(coord[0], coord[1]),
+                    zoom: 15,
+                    styles: [{
+                        stylers: [{ visibility: 'simplified' }]
+                    }, {
+                        elementType: 'labels',
+                        stylers: [{ visibility: 'off' }]
+                    }]
+                };
+            } else {
+                return {
+                    center: { lat: 32.7157, lng: -117.1611 },
+                    zoom: 15,
+                    styles: [{
+                        stylers: [{ visibility: 'simplified' }]
+                    }, {
+                        elementType: 'labels',
+                        stylers: [{ visibility: 'off' }]
+                    }]
+                };
+            }
         }
+
+        function performSearch() {
+            var request = {
+                bounds: map.getBounds(),
+                keyword: 'best view'
+            };
+            service.radarSearch(request, callback);
+        }
+
+        function callback(results, status) {
+            if (status !== google.maps.places.PlacesServiceStatus.OK) {
+                console.error(status);
+                return;
+            }
+            for (var i = 0, result; result = results[i]; i++) {
+                addMarker(result);
+            }
+        }
+
+        function addMarker(place) {
+            var marker = new google.maps.Marker({
+                map: map,
+                position: place.geometry.location,
+                icon: {
+                    url: 'http://maps.gstatic.com/mapfiles/circle.png',
+                    anchor: new google.maps.Point(10, 10),
+                    scaledSize: new google.maps.Size(10, 17)
+                }
+            });
+
+            google.maps.event.addListener(marker, 'click', function() {
+                service.getDetails(place, function(result, status) {
+                    if (status !== google.maps.places.PlacesServiceStatus.OK) {
+                        console.error(status);
+                        return;
+                    }
+                    infoWindow.setContent(result.name);
+                    infoWindow.open(map, marker);
+                });
+            });
+        }
+
 
         function getGooglePlaces() {
             //perform search
         }
 
-        function placeMarkers(){
+        function placeMarkers() {
             //addMarkers
         }
     }

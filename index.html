@@ -9,7 +9,7 @@
     <!-- endinject -->
 </head>
 
-<body ng-controller="appCtrl as app">
+<body ng-controller="appCtrl as app" ng-init="app.getCoordinates()">
     <main>
         <div class="box">
             <div class="columns">
@@ -124,7 +124,7 @@
             </p>
         </form>
     </div>
-    <div id="map" class="box" ng-init="app.init()">
+    <div id="map" class="box">
         <!--Map Container-->
     </div>
     <footer class="footer">
