@@ -5,7 +5,7 @@
         .module('app')
         .controller('appCtrl', appCtrl);
 
-    appCtrl.$inject = ['GoogleAPIFactory' ];
+    appCtrl.$inject = ['GoogleAPIFactory'];
 
     /* @ngInject */
     function appCtrl(GoogleAPIFactory) {
@@ -20,19 +20,18 @@
 
         function setMap(){
             if (navigator.geolocation) {
-                window.onload = function() {
-                    var startPos;
-                    var geoSuccess = function(position) {
-                        startPos = position;
-                        vm.coordinates.push(parseFloat(startPos.coords.latitude));
-                        vm.coordinates.push(parseFloat(startPos.coords.longitude));
-                    };
-                    navigator.geolocation.getCurrentPosition(geoSuccess);
-                };
+                var startPos;
+                var geoSuccess = function(position) {
+                    startPos = position;
+                    vm.coordinates.push(parseFloat(startPos.coords.latitude));
+                    vm.coordinates.push(parseFloat(startPos.coords.longitude));
+                    GoogleAPIFactory.setMapCenter(vm.coordinates);
 
-                return GoogleAPIFactory.setMapCenter(vm.coordinates);
-            }
-            else {
+                };
+                navigator.geolocation.getCurrentPosition(geoSuccess);
+
+            } else {
+                // toastr.error("Your location can't be found via the browser. Please type in your address.");
                 console.log("Your location can't be found via the browser. Please type in your address.")
             }
         }
