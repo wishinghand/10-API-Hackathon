@@ -49,7 +49,7 @@
                 };
             } else {
                 return {
-                    center: { lat: 32.7157, lng: -117.1611 },
+                    center: { lat: -32.7157, lng: 117.1611 },
                     zoom: 15,
                     styles: [{
                         stylers: [{ visibility: 'simplified' }]
