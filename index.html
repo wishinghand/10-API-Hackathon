@@ -11,38 +11,54 @@
 
 <body ng-controller="appCtrl as app">
     <main>
-        <div class="mySpecialClass box">
+        <div class="box">
             <div class="columns">
                 <div class="column">
                     <h1 class="content heading is-medium">What's up Brah?</h1>
                 </div>
                 <div class="column">
                     <div align="right">
-                        <i class="icon fa fa-bars"></i>
+                        <i ng-click="settings = !settings" class="icon fa fa-bars"></i>
                     </div>
                 </div>
             </div>
         </div>
     </main>
     <br>
-    <div class="box">
+    <div ng-show="settings" class="box">
         <form>
-            <h1 class="content is-medium">Settings</h1>
+            <h1 class="content is-large">Settings</h1>
             <h2 class="content">Select which types of places you would like to see...</h2>
-            <!--'', '', '', '', '', '', '', '', '', '', 'movie_theater', 'museum', 'night_club', 'park', 'restaurant', 'shopping_mall', 'spa', 'stadium', 'zoo'];
-        var serious_types = ['airport', 'atm', 'bank', 'car_repair', 'city_hall', 'courthouse', 'dentist', 'doctor', 'electrician', 'embassy', 'fire_station', 'gas_station', 'grocery_or_supermarket', 'gym', 'hardware_store', 'hospital', 'laundry', 'lawyer', 'library', 'locksmith', 'local_government_office', 'lodging', 'painter', 'parking', 'pharmacy', 'plumber', 'police', 'post_office', 'storage', 'train_station', 'transit_station', 'veterinary_care'];-->
-            <h2>Fun Stuff</h2>
-            <p class="control" ng-repeat="funThing in app.fun_types">
-                <input type="checkbox" id="funThing">
-                <label for="funThing">{{funThing.split("_").join(" ")}}</label>
-            </p>
-
-            <h2>Serious Stuff</h2>
+            
+            <div class="columns">
+            <div class="column">
+            <h2 class="content is-medium">Serious Stuff</h2>
             <p class="control" ng-repeat="seriousThing in app.serious_types">
                 <input type="checkbox" id="seriousThing">
                 <label for="funThing">{{seriousThing.split("_").join(" ")}}</label>
             </p>
-
+            </div>
+           	<div class="column">
+            <h2 class="content is-medium">Fun Stuff</h2>
+            <p class="control" ng-repeat="funThing in app.fun_types">
+                <input type="checkbox" id="funThing">
+                <label for="funThing">{{funThing.split("_").join(" ")}}</label>
+            </p>
+            </div>
+            <div class="column">
+            <h2 class="content">Select a search radius (meters)...</h2>
+            <p class="control select">
+                <select class="is-medium" type="text" placeholder="50000 Meters">
+                    <option value="5">10</option>
+                    <option value="50">100</option>
+                    <option value="50">1000</option>
+                    <option value="50">10000</option>
+                    <option value="50">25000</option>
+                    <option value="50">50000</option>
+                </select>
+            </p>
+            </div>
+            </div>
             <!-- <input value="amusement_park" type="checkbox" class="checkbox">
             <label>Amusement park</label>
             <br>
@@ -95,17 +111,7 @@
             <label>campground</label>
             <br>
             <br>
-            <h2 class="content">Enter a search radius (meters)...</h2>
-            <p class="control select">
-                <select class="is-medium" type="text" placeholder="50000 Meters">
-                    <option value="5">10</option>
-                    <option value="50">100</option>
-                    <option value="50">1000</option>
-                    <option value="50">10000</option>
-                    <option value="50">25000</option>
-                    <option value="50">50000</option>
-                </select>
-            </p> -->
+             -->
         </form>
     </div>
     <div class="box" ng-controller="addressInputCtrl as search">
@@ -121,7 +127,6 @@
     <div id="map" class="box" ng-init="app.init()">
         <!--Map Container-->
     </div>
-
     <footer class="footer">
         <div class="content has-text-centered">
             <strong>
@@ -132,24 +137,10 @@
             <a href="https://github.com/rdowdy">Ryan Dowdy.</a>
         </div>
     </footer>
-
     <script src="https://maps.googleapis.com/maps/api/js?libraries=places"></script>
     <!-- inject:js -->
     <script src="build/build.js"></script>
     <!-- endinject -->
 </body>
-<<<<<<< HEAD
-<footer class="footer">
-    <div class="content has-text-centered">
-        <strong>
-	<a href='https://github.com/wishinghand/10-API-Hackathon.git'>What’s Up?</a>
-</strong> was created by
-        <a href="http://qobbler.com">Jason Land</a>,
-        <a href="https://github.com/comrww">Ryan Wilson</a>, and
-        <a href="https://github.com/rdowdy">Ryan Dowdy.</a>
-    </div>
-</footer>
 
-=======
->>>>>>> 30f3ceaff9f635989b974e6d8e7681c10b97ddf6
 </html>
