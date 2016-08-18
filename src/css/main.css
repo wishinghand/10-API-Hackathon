@@ -2,6 +2,14 @@
     height: 500px;
 }
 
-.mySpecialClass {
-	display: inline-block;
+.inline-block {
+	display: inline-block !important;
+}
+
+.box h1.heading {
+	display: inline !important;
+}
+.box i {
+	display: inline !important;
+	float: right !important;
 }

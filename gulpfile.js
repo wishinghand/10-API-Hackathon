@@ -9,7 +9,7 @@ var gulp = require('gulp'),
     clean = require('gulp-clean');
 
 var jsSources = ['src/**/*.js'],
-    cssSources = ['src/css/**/*.scss'],
+    cssSources = ['src/css/**/*.scss', 'src/css/**/*.css'],
     htmlSources = ['**/*.html'];
 
 gulp.task('clean', function(){
@@ -55,8 +55,8 @@ gulp.task('connect', function(){
 
 //checks js/html/css on change...
 gulp.task('watch', function() {
-    gulp.watch(jsSources, ['js', 'concatJs']);
-    gulp.watch(cssSources, ['css', 'compileSass']);
+    gulp.watch(jsSources, ['concatJs', 'js']);
+    gulp.watch(cssSources, ['compileSass', 'css']);
     gulp.watch(htmlSources, ['html']);
 });
 
