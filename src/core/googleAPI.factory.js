@@ -34,6 +34,14 @@
             map.addListener('idle', performSearch);
         }
 
+        function getGooglePlaces() {
+            //perform search
+        }
+
+        function placeMarkers() {
+            //addMarkers
+        }
+
         function getMapCenter(coord) {
             if (coord) {
                 return {
@@ -102,15 +110,6 @@
                     infoWindow.open(map, marker);
                 });
             });
-        }
-
-
-        function getGooglePlaces() {
-            //perform search
-        }
-
-        function placeMarkers() {
-            //addMarkers
         }
     }
 })();
