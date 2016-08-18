@@ -16,7 +16,7 @@
         var serious_types = ['airport', 'atm', 'bank', 'car_repair', 'city_hall', 'courthouse', 'dentist', 'doctor', 'electrician', 'embassy', 'fire_station', 'gas_station', 'grocery_or_supermarket', 'gym', 'hardware_store', 'hospital', 'laundry', 'lawyer', 'library', 'locksmith', 'local_government_office', 'lodging', 'painter', 'parking', 'pharmacy', 'plumber', 'police', 'post_office', 'storage', 'train_station', 'transit_station', 'veterinary_care'];
 
         var service = {
-            initMap: initMap,
+            setMapCenter: setMapCenter,
             getGooglePlaces: getGooglePlaces,
             placeMarkers: placeMarkers
         };
@@ -25,8 +25,8 @@
 
         ////////////////
 
-        function initMap(coord) {
-            map = new google.maps.Map(document.getElementById('map'), mapStyles(coord));
+        function setMapCenter(coord) {
+            map = new google.maps.Map(document.getElementById('map'), getMapCenter(coord));
             infoWindow = new google.maps.InfoWindow();
             service = new google.maps.places.PlacesService(map);
 
@@ -34,7 +34,15 @@
             map.addListener('idle', performSearch);
         }
 
-        function mapStyles(coord) {
+        function getGooglePlaces() {
+            //perform search
+        }
+
+        function placeMarkers() {
+            //addMarkers
+        }
+
+        function getMapCenter(coord) {
             if (coord) {
                 return {
                     // investigate { lat: coord[0], lng: coord[1]}
@@ -45,18 +53,20 @@
                     }, {
                         elementType: 'labels',
                         stylers: [{ visibility: 'off' }]
-                    }]
+                    }],
+                    scrollwheel: false
                 };
             } else {
                 return {
-                    center: { lat: 32.7157, lng: -117.1611 },
+                    center: { lat: -32.7157, lng: 117.1611 },
                     zoom: 15,
                     styles: [{
                         stylers: [{ visibility: 'simplified' }]
                     }, {
                         elementType: 'labels',
                         stylers: [{ visibility: 'off' }]
-                    }]
+                    }],
+                    scrollwheel: false
                 };
             }
         }
@@ -100,15 +110,6 @@
                     infoWindow.open(map, marker);
                 });
             });
-        }
-
-
-        function getGooglePlaces() {
-            //perform search
-        }
-
-        function placeMarkers() {
-            //addMarkers
         }
     }
 })();
