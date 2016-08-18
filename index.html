@@ -32,29 +32,63 @@
         <form>
             <h1 class="content is-medium">Settings</h1>
             <h2 class="content">Select which types of places you would like to see...</h2>
-            <input type="checkbox" class="checkbox">
-            <label>Resturants</label>
+            <!--'', '', '', '', '', '', '', '', '', '', 'movie_theater', 'museum', 'night_club', 'park', 'restaurant', 'shopping_mall', 'spa', 'stadium', 'zoo'];
+        var serious_types = ['airport', 'atm', 'bank', 'car_repair', 'city_hall', 'courthouse', 'dentist', 'doctor', 'electrician', 'embassy', 'fire_station', 'gas_station', 'grocery_or_supermarket', 'gym', 'hardware_store', 'hospital', 'laundry', 'lawyer', 'library', 'locksmith', 'local_government_office', 'lodging', 'painter', 'parking', 'pharmacy', 'plumber', 'police', 'post_office', 'storage', 'train_station', 'transit_station', 'veterinary_care'];-->
+            <input value="amusement_park" type="checkbox" class="checkbox">
+            <label>Amusement park</label>
             <br>
-            <input type="checkbox" class="checkbox">
-            <label>Supermarkets</label>
+            <input value="aquarium" type="checkbox" class="checkbox">
+            <label>Aquarium</label>
             <br>
-            <input type="checkbox" class="checkbox">
-            <label>Gym's</label>
+            <input value="bar" type="checkbox" class="checkbox">
+            <label>Bar</label>
             <br>
-            <input type="checkbox" class="checkbox">
-            <label>Parks</label>
+            <input value="art_gallery" type="checkbox" class="checkbox">
+            <label>Art gallery</label>
             <br>
-            <input type="checkbox" class="checkbox">
-            <label>Mall's</label>
+            <input value="book_store" type="checkbox" class="checkbox">
+            <label>Book store</label>
             <br>
-            <input type="checkbox" class="checkbox">
-            <label>Monuments</label>
+            <input value="campground" type="checkbox" class="checkbox">
+            <label>campground</label>
+            <br>
+            <input value="casino" type="checkbox" class="checkbox">
+            <label>Casino</label>
+            <br>
+            <input value="campground" type="checkbox" class="checkbox">
+            <label>Campground</label>
+            <br>
+            <input value="beauty_salon" type="checkbox" class="checkbox">
+            <label>Beauty salon</label>
+            <br>
+            <input value="florist" type="checkbox" class="checkbox">
+            <label>Florist</label>
+            <br>
+            <input value="campground" type="checkbox" class="checkbox">
+            <label>Movie rental</label>
+            <br>
+            <input value="campground" type="checkbox" class="checkbox">
+            <label>campground</label>
+            <br>
+            <input value="campground" type="checkbox" class="checkbox">
+            <label>campground</label>
+            <br>
+            <input value="campground" type="checkbox" class="checkbox">
+            <label>campground</label>
+            <br>
+            <input value="campground" type="checkbox" class="checkbox">
+            <label>campground</label>
+            <br>
+            <input value="campground" type="checkbox" class="checkbox">
+            <label>campground</label>
+            <br>
+            <input value="campground" type="checkbox" class="checkbox">
+            <label>campground</label>
             <br>
             <br>
             <h2 class="content">Enter a search radius (meters)...</h2>
             <p class="control select">
                 <select class="is-medium" type="text" placeholder="50000 Meters">
-                    <!--Get info from Google API factory and update-->
                     <option value="5">10</option>
                     <option value="50">100</option>
                     <option value="50">1000</option>
