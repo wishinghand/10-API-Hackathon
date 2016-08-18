@@ -11,8 +11,6 @@
     function addressInputCtrl(GoogleAPIFactory) {
         /*jshint validthis: true */
         var vm = this;
-        var _types = [];
-        var _keywords = [];
         vm.title = 'addressInputCtrl';
         vm.addressInput = "";
 
@@ -20,6 +18,7 @@
 
         function searchForThingsToDo() {
             var fullAddress = addresssInput.formattedAddress;
+            // GoogleAPIFactory.getGooglePlaces(fullAddress);
         }
     }
 })();

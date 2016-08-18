@@ -9,7 +9,7 @@
     <!-- endinject -->
 </head>
 
-<body>
+<body ng-controller="appCtrl as app">
     <main>
         <div class="box">
             <h1 class="content heading is-medium">What's up Brah?</h1></div>
@@ -25,7 +25,7 @@
             </p>
         </form>
     </div>
-    <div id="map" class="box">
+    <div id="map" class="box" ng-init="app.init()">
         <!--Map Container-->
     </div>
     <div class="box">
