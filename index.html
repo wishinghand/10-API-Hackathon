@@ -17,7 +17,7 @@
     </script>
 </head>
 
-<body ng-controller="appCtrl as app">
+<body ng-controller="appCtrl as app" >
     <div class="se-pre-con" ng-show="app.loading"></div>
     <div ng-hide="app.loading">
         <main>
@@ -73,7 +73,14 @@
                 </p>
             </form>
         </div>
+<<<<<<< HEAD
         <ui-gmap-google-map id="map" center='app.map.center' zoom='app.map.zoom' class="box add-margin angular-google-map-container" options="app.map.options"></ui-gmap-google-map>
+=======
+        <!-- <div id="map" class="box"> -->
+            <!--Map Container-->
+        <!-- </div> -->
+        <ui-gmap-google-map id="map" center='app.map.center' zoom='app.map.zoom' class="angular-google-map-container box" options="app.map.options" control="app.map.control"></ui-gmap-google-map>
+>>>>>>> 61d2968368a692689be21203f2276bb7fa1247e3
         <footer class="footer">
             <div class="content has-text-centered">
                 <strong>

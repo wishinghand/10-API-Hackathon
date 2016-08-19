@@ -17,6 +17,7 @@
         vm.setMap = setMap;
         vm.coordinates = [];
         vm.map = {
+            //default view of map
             center: { latitude: 32.7157, longitude: -117.1611 },
             zoom: 15,
             options: {
@@ -27,7 +28,8 @@
                     stylers: [{ visibility: 'off' }]
                 }],
                 scrollwheel: false
-            }
+            },
+            control: GoogleAPIFactory.getMapControl()
         };
         vm.title = 'appCtrl';
         vm.fun_types = ['amusement_park', 'aquarium', 'bar', 'art_gallery', 'book_store', 'campground', 'casino', 'beauty_salon', 'florist', 'movie_rental', 'movie_theater', 'museum', 'night_club', 'park', 'restaurant', 'shopping_mall', 'spa', 'stadium', 'zoo'];
@@ -62,7 +64,6 @@
                 navigator.geolocation.getCurrentPosition(geoSuccess);
 
             } else {
-                // toastr.error("Your location can't be found via the browser. Please type in your address.");
                 console.log("Your location can't be found via the browser. Please type in your address.")
             }
         }
@@ -73,7 +74,6 @@
         }
 
         uiGmapGoogleMapApi.then(function(maps) {
-            GoogleAPIFactory.setMapObject(maps);
             vm.loading = false;
         });
     }
