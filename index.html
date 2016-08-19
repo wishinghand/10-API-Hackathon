@@ -22,15 +22,15 @@
     <div ng-hide="app.loading">
         <main>
             <div class="box">
-                <h1 class="content heading is-medium ng-cloak" ng-cloak>{{app.headingText}}</h1>
+                <strong><h1 class="content heading is-medium ng-cloak" ng-cloak>{{app.headingText}}</h1></strong>
                 <i ng-click="settings = !settings" ng-hide="settings" class="icon fa fa-bars"></i>
-                <i ng-click="settings = !settings" ng-show="settings" class="icon fa fa-times"></i>
+                <i ng-click="settings = !settings" ng-show="settings" class="icon fa fa-times-circle"></i>
             </div>
         </main>
-        <br>
-        <div ng-show="settings" class="box">
+        <div ng-show="settings" class="box add-margin">
             <form>
-                <h1 class="content is-large">Settings</h1>
+            	<i class="icon fa fa-cogs is-large light-grey"></i>
+                <strong><h1 class="content is-large">Settings</h1></strong>
                 <h2 class="content">Select which types of places you would like to see...</h2>
                 <div class="columns">
                     <div class="column">
@@ -63,7 +63,7 @@
                 </div>
             </form>
         </div>
-        <div class="box" ng-controller="addressInputCtrl as search">
+        <div class="box add-margin" ng-controller="addressInputCtrl as search">
             <form class="control is-grouped">
                 <p class="control is-expanded">
                     <input class="input is-medium" type="text" ng-model="search.addressInput" placeholder="Address" g-places-autocomplete autofocus>
@@ -73,10 +73,7 @@
                 </p>
             </form>
         </div>
-        <!-- <div id="map" class="box"> -->
-            <!--Map Container-->
-        <!-- </div> -->
-        <ui-gmap-google-map id="map" center='app.map.center' zoom='app.map.zoom' class="angular-google-map-container box" options="app.map.options"></ui-gmap-google-map>
+        <ui-gmap-google-map id="map" center='app.map.center' zoom='app.map.zoom' class="box add-margin angular-google-map-container" options="app.map.options"></ui-gmap-google-map>
         <footer class="footer">
             <div class="content has-text-centered">
                 <strong>

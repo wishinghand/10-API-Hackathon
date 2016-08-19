@@ -2,7 +2,10 @@
     height: 500px;
 } */
 
-.angular-google-map-container { height: 400px; }
+.angular-google-map-container { 
+	height: 40.5em;
+	padding: 0.3em;
+}
 
 
 .inline-block {
@@ -41,4 +44,12 @@
     height: 100%;
     z-index: 9999;
     background: url("/src/css/preloader.gif") center no-repeat #fff;
+}
+
+.add-margin {
+	margin: 2em;
+}
+
+.light-grey {
+	color: lightgrey;
 }
