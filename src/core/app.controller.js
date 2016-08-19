@@ -14,6 +14,7 @@
 
         vm.loading = true;
         //this function sets the map on page load
+
         vm.setMap = setMap;
         //this function is run when user searches for their address
         // vm.getMap = getMap;
