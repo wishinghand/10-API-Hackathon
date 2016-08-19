@@ -9,14 +9,14 @@
 
     /* @ngInject */
     function GoogleAPIFactory() {
-        var map;
+        var map = {}; // the actual GMap will be in map.getGMap()
         var infoWindow;
         var service;
         var fun_types = ['amusement_park', 'aquarium', 'bar', 'art_gallery', 'book_store', 'campground', 'casino', 'beauty_salon', 'florist', 'movie_rental', 'movie_theater', 'museum', 'night_club', 'park', 'restaurant', 'shopping_mall', 'spa', 'stadium', 'zoo'];
         var serious_types = ['airport', 'atm', 'bank', 'car_repair', 'city_hall', 'courthouse', 'dentist', 'doctor', 'electrician', 'embassy', 'fire_station', 'gas_station', 'grocery_or_supermarket', 'gym', 'hardware_store', 'hospital', 'laundry', 'lawyer', 'library', 'locksmith', 'local_government_office', 'lodging', 'painter', 'parking', 'pharmacy', 'plumber', 'police', 'post_office', 'storage', 'train_station', 'transit_station', 'veterinary_care'];
 
         var service = {
-            setMapObject: setMapObject,
+            getMapControl: getMapControl,
             setMapCenter: setMapCenter,
             getGooglePlaces: getGooglePlaces
         };
@@ -24,14 +24,16 @@
         return service;
 
         ////////////////
-        function setMapObject(mapIn) {
-            map = mapIn;
+        function getMapControl() {
+            return map;
         }
 
         function setMapCenter(coord) {
-            map = new google.maps.Map(document.getElementById('map'), getMapCenter(coord));
+            var gmap = map.getGMap();
+            // map = new google.maps.Map(document.getElementById('map'), getMapCenter(coord));
             infoWindow = new google.maps.InfoWindow();
             service = new google.maps.places.PlacesService(map);
+            gmap.setCenter({lat: coord[0], lng: coord[1]});
             // The idle event is a debounced event, so we can query & listen without throwing too many requests at the server.
             //map.addListener('idle', performSearch);
         }
