@@ -23,7 +23,7 @@
             // console.log(latlng);
             var coords = [vm.addressInput.geometry.location.lat(), vm.addressInput.geometry.location.lng()];
             GoogleAPIFactory.setMapCenter(coords);
-            GoogleAPIFactory.getGooglePlaces();
+            //GoogleAPIFactory.getGooglePlaces();
         }
 
         function codeAddress(address) {
