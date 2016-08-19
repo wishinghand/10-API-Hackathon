@@ -17,12 +17,12 @@
         <main>
             <div class="box">
                 <h1 class="content heading is-medium ng-cloak" ng-cloak>{{app.shuffleHeadings()}}</h1>
-                <i ng-click="settings = !settings" ng-hide="settings" class="icon fa fa-bars"></i>
-                <i ng-click="settings = !settings" ng-show="settings" class="icon fa fa-times"></i>
+                <i ng-click="showSettings = !showSettings" ng-hide="showSettings" class="icon fa fa-bars"></i>
+                <i ng-click="showSettings = !showSettings" ng-show="showSettings" class="icon fa fa-times"></i>
             </div>
         </main>
         <br>
-        <div ng-show="settings" class="box">
+        <div ng-show="showSettings" class="box">
             <form>
                 <h1 class="content is-large">Settings</h1>
                 <h2 class="content">Select which types of places you would like to see...</h2>

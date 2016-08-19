@@ -44,9 +44,9 @@
                     vm.coordinates.push(parseFloat(startPos.coords.latitude));
                     vm.coordinates.push(parseFloat(startPos.coords.longitude));
                     GoogleAPIFactory.setMapCenter(vm.coordinates);
-                    vm.loading = false;
                 };
                 navigator.geolocation.getCurrentPosition(geoSuccess);
+                vm.loading = false;
 
             } else {
                 // toastr.error("Your location can't be found via the browser. Please type in your address.");
