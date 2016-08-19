@@ -1,6 +1,9 @@
-#map {
+/* #map {
     height: 500px;
-}
+} */
+
+.angular-google-map-container { height: 400px; }
+
 
 .inline-block {
     display: inline-block !important;
