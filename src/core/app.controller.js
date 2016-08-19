@@ -73,8 +73,8 @@
             return vm.headings[i];
         }
 
-        uiGmapGoogleMapApi.then(function(maps) {
+        // uiGmapGoogleMapApi.then(function(maps) {
             
-        });
+        // });
     }
 })();
