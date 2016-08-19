@@ -37,9 +37,19 @@
             "Find something to do with your friends",
             "City Vibes",
             "Where's them good eats?"
-        ]
+        ];
 
-        function setMap(){
+        vm.loading = true;
+        //this function sets the map on page load
+        vm.setMap = setMap;
+        //this function is run when user searches for their address
+        // vm.getMap = getMap;
+        vm.coordinates = [];
+        vm.title = 'appCtrl';
+        vm.shuffleHeadings = shuffleHeadings;
+        vm.headingText = shuffleHeadings();
+
+        function setMap() {
             if (navigator.geolocation) {
                 var startPos;
                 var geoSuccess = function(position) {
@@ -57,7 +67,7 @@
             }
         }
 
-        function shuffleHeadings(){
+        function shuffleHeadings() {
             var i = Math.floor((Math.random() * vm.headings.length));
             return vm.headings[i];
         }

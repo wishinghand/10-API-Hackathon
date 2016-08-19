@@ -26,9 +26,9 @@
     <div ng-hide="app.loading">
         <main>
             <div class="box">
-                <h1 class="content heading is-medium ng-cloak" ng-cloak>{{app.shuffleHeadings()}}</h1>
-                <i ng-click="showSettings = !showSettings" ng-hide="showSettings" class="icon fa fa-bars"></i>
-                <i ng-click="showSettings = !showSettings" ng-show="showSettings" class="icon fa fa-times"></i>
+                <h1 class="content heading is-medium ng-cloak" ng-cloak>{{app.headingText}}</h1>
+                <i ng-click="settings = !settings" ng-hide="settings" class="icon fa fa-bars"></i>
+                <i ng-click="settings = !settings" ng-show="settings" class="icon fa fa-times"></i>
             </div>
         </main>
         <br>
@@ -65,59 +65,7 @@
                         </p>
                     </div>
                 </div>
-                <!-- <input value="amusement_park" type="checkbox" class="checkbox">
-            <label>Amusement park</label>
-            <br>
-            <input value="aquarium" type="checkbox" class="checkbox">
-            <label>Aquarium</label>
-            <br>
-            <input value="bar" type="checkbox" class="checkbox">
-            <label>Bar</label>
-            <br>
-            <input value="art_gallery" type="checkbox" class="checkbox">
-            <label>Art gallery</label>
-            <br>
-            <input value="book_store" type="checkbox" class="checkbox">
-            <label>Book store</label>
-            <br>
-            <input value="campground" type="checkbox" class="checkbox">
-            <label>campground</label>
-            <br>
-            <input value="casino" type="checkbox" class="checkbox">
-            <label>Casino</label>
-            <br>
-            <input value="campground" type="checkbox" class="checkbox">
-            <label>Campground</label>
-            <br>
-            <input value="beauty_salon" type="checkbox" class="checkbox">
-            <label>Beauty salon</label>
-            <br>
-            <input value="florist" type="checkbox" class="checkbox">
-            <label>Florist</label>
-            <br>
-            <input value="campground" type="checkbox" class="checkbox">
-            <label>Movie rental</label>
-            <br>
-            <input value="campground" type="checkbox" class="checkbox">
-            <label>campground</label>
-            <br>
-            <input value="campground" type="checkbox" class="checkbox">
-            <label>campground</label>
-            <br>
-            <input value="campground" type="checkbox" class="checkbox">
-            <label>campground</label>
-            <br>
-            <input value="campground" type="checkbox" class="checkbox">
-            <label>campground</label>
-            <br>
-            <input value="campground" type="checkbox" class="checkbox">
-            <label>campground</label>
-            <br>
-            <input value="campground" type="checkbox" class="checkbox">
-            <label>campground</label>
-            <br>
-            <br>
-             -->
+
             </form>
         </div>
         <div class="box" ng-controller="addressInputCtrl as search">
@@ -133,7 +81,7 @@
         <!-- <div id="map" class="box"> -->
             <!--Map Container-->
         <!-- </div> -->
-        <ui-gmap-google-map center='app.center' zoom='app.zoom' class="angular-google-map-container"></ui-gmap-google-map>
+        <ui-gmap-google-map id="map" center='app.map.center' zoom='app.map.zoom' class="angular-google-map-container box"></ui-gmap-google-map>
         <footer class="footer">
             <div class="content has-text-centered">
                 <strong>
