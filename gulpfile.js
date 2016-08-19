@@ -39,7 +39,8 @@ gulp.task('copyFonts', function() {
 });
 
 gulp.task('inject', function(){
-    var sources = gulp.src(['./build/*.css', './build/*.js'], {read: false})
+    // var sources = gulp.src(['./build/*.css', './build/*.js'], {read: false})
+    var sources = gulp.src(['./build/*.css', './src/core/lodash.min.js', './node_modules/angular/angular.js', './src/core/angular-simple-logger.js', './src/core/angular-google-maps.js', './src/core/app.module.js', './src/core/*.js', './src/search/addressInput.controller.js'], {read: false})
     return gulp.src('index.html')
         .pipe(inject(sources, {relative: true}))
         .pipe(gulp.dest('./'));
