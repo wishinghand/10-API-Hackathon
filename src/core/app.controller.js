@@ -17,6 +17,7 @@
         vm.setMap = setMap;
         vm.coordinates = [];
         vm.map = {
+            //default view of map
             center: { latitude: 32.7157, longitude: -117.1611 },
             zoom: 15,
             options: {
@@ -62,7 +63,6 @@
                 navigator.geolocation.getCurrentPosition(geoSuccess);
 
             } else {
-                // toastr.error("Your location can't be found via the browser. Please type in your address.");
                 console.log("Your location can't be found via the browser. Please type in your address.")
             }
         }
