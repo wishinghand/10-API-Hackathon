@@ -2,6 +2,14 @@
 <html lang="en" ng-app="app">
 
 <head>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.2/modernizr.js"></script>
+<script>
+$(window).load(function() {
+		// Animate loader off screen
+		$(".se-pre-con").fadeOut("slow");;
+	});
+</script>
     <meta charset="UTF-8">
     <title>What's Up Brah?</title>
     <!-- inject:css -->
@@ -10,6 +18,7 @@
 </head>
 
 <body ng-controller="appCtrl as app" ng-init="app.setMap()">
+<div class="se-pre-con"></div>
     <main>
         <div class="box">
             <h1 class="content heading is-medium ng-cloak" ng-cloak>{{app.shuffleHeadings()}}</h1>
@@ -134,5 +143,4 @@
     <script src="build/build.js"></script>
     <!-- endinject -->
 </body>
-
 </html>
