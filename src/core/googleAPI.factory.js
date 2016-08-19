@@ -17,8 +17,7 @@
 
         var service = {
             setMapCenter: setMapCenter,
-            getGooglePlaces: getGooglePlaces,
-            placeMarkers: placeMarkers
+            getGooglePlaces: getGooglePlaces
         };
 
         return service;
@@ -35,10 +34,6 @@
 
         function getGooglePlaces() {
             //perform search
-        }
-
-        function placeMarkers() {
-            //addMarkers
         }
 
         function getMapCenter(coord) {
