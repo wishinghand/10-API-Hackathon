@@ -11,6 +11,8 @@
     function appCtrl(GoogleAPIFactory, uiGmapGoogleMapApi) {
         /*jshint validthis: true */
         var vm = this;
+
+        vm.loading = true;
         //this function sets the map on page load
         vm.setMap = setMap;
         //this function is run when user searches for their address
@@ -44,7 +46,7 @@
                     vm.coordinates.push(parseFloat(startPos.coords.latitude));
                     vm.coordinates.push(parseFloat(startPos.coords.longitude));
                     GoogleAPIFactory.setMapCenter(vm.coordinates);
-
+                    vm.loading = false;
                 };
                 navigator.geolocation.getCurrentPosition(geoSuccess);
 

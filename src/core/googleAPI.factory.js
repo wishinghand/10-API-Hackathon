@@ -34,6 +34,7 @@
 
         function getGooglePlaces() {
             //perform search
+            performSearch();
         }
 
         function getMapCenter(coord) {
@@ -66,11 +67,18 @@
         }
 
         function performSearch() {
+            var searchTypes = getTypesToSearch();
             var request = {
                 bounds: map.getBounds(),
-                keyword: 'best view'
+                types: searchTypes
             };
             service.radarSearch(request, callback);
+        }
+
+        // TODO: look at checkboxes to see what the user
+        // wants to search
+        function getTypesToSearch() {
+            return fun_types.concat(serious_types);
         }
 
         function callback(results, status) {
