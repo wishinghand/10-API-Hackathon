@@ -23,7 +23,10 @@
         return service;
 
         ////////////////
-
+        function setMapObject(mapIn) {
+            map = mapIn;
+        }
+        
         function setMapCenter(coord) {
             map = new google.maps.Map(document.getElementById('map'), getMapCenter(coord));
             infoWindow = new google.maps.InfoWindow();
