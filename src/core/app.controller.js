@@ -55,6 +55,7 @@
                     startPos = position;
                     vm.coordinates.push(parseFloat(startPos.coords.latitude));
                     vm.coordinates.push(parseFloat(startPos.coords.longitude));
+                    //factory function call
                     GoogleAPIFactory.setMapCenter(vm.coordinates);
                     vm.loading = false;
                 };
