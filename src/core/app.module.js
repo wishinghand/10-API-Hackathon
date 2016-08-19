@@ -3,6 +3,7 @@
 
     angular
         .module('app', [
-            'google.places'
+            'google.places',
+            'uiGmapgoogle-maps'
         ]);
 })();
