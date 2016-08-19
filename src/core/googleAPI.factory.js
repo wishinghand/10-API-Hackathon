@@ -16,6 +16,7 @@
         var serious_types = ['airport', 'atm', 'bank', 'car_repair', 'city_hall', 'courthouse', 'dentist', 'doctor', 'electrician', 'embassy', 'fire_station', 'gas_station', 'grocery_or_supermarket', 'gym', 'hardware_store', 'hospital', 'laundry', 'lawyer', 'library', 'locksmith', 'local_government_office', 'lodging', 'painter', 'parking', 'pharmacy', 'plumber', 'police', 'post_office', 'storage', 'train_station', 'transit_station', 'veterinary_care'];
 
         var service = {
+            setMapObject: setMapObject,
             setMapCenter: setMapCenter,
             getGooglePlaces: getGooglePlaces
         };
@@ -26,7 +27,7 @@
         function setMapObject(mapIn) {
             map = mapIn;
         }
-        
+
         function setMapCenter(coord) {
             map = new google.maps.Map(document.getElementById('map'), getMapCenter(coord));
             infoWindow = new google.maps.InfoWindow();
