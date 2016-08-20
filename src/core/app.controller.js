@@ -5,10 +5,10 @@
         .module('app')
         .controller('appCtrl', appCtrl);
 
-    appCtrl.$inject = ['GoogleAPIFactory', 'uiGmapGoogleMapApi'];
+    appCtrl.$inject = ['GoogleAPIFactory', 'uiGmapGoogleMapApi', 'uiGmapIsReady'];
 
     /* @ngInject */
-    function appCtrl(GoogleAPIFactory, uiGmapGoogleMapApi) {
+    function appCtrl(GoogleAPIFactory, uiGmapGoogleMapApi, uiGmapIsReady) {
         /*jshint validthis: true */
         var vm = this;
 
@@ -28,8 +28,7 @@
                     stylers: [{ visibility: 'off' }]
                 }],
                 scrollwheel: false
-            },
-            control: GoogleAPIFactory.getMapControl()
+            }
         };
         vm.title = 'appCtrl';
         vm.fun_types = ['amusement_park', 'aquarium', 'bar', 'art_gallery', 'book_store', 'campground', 'casino', 'beauty_salon', 'florist', 'movie_rental', 'movie_theater', 'museum', 'night_club', 'park', 'restaurant', 'shopping_mall', 'spa', 'stadium', 'zoo'];
@@ -59,7 +58,7 @@
                     vm.coordinates.push(parseFloat(startPos.coords.longitude));
                     //factory function call
                     GoogleAPIFactory.setMapCenter(vm.coordinates);
-                    vm.loading = false;
+                    //vm.loading = false;
                 };
                 navigator.geolocation.getCurrentPosition(geoSuccess);
 
@@ -73,8 +72,21 @@
             return vm.headings[i];
         }
 
+        // for some reason, the GMap will only load properly
+        // when vm.loading is set to false in this specifc callback
         uiGmapGoogleMapApi.then(function(maps) {
             vm.loading = false;
+        });
+
+        // this promise will resolve when the actual google maps
+        // instance (on the page) is ready
+        uiGmapIsReady.promise(1).then(function(instances) {
+            instances.forEach(function(inst) {
+                // give the map instance to the API factory
+                GoogleAPIFactory.setMap(inst.map);
+                setMap();
+                //vm.loading = false;
+            });
         });
     }
 })();
