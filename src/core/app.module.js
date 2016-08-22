@@ -4,6 +4,7 @@
     angular
         .module('app', [
             'google.places',
-            'uiGmapgoogle-maps'
+            'uiGmapgoogle-maps',
+            'checklist-model'
         ]);
 })();

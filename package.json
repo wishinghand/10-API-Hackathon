@@ -39,5 +39,8 @@
     "gulp-sass": "^2.3.2",
     "gulp-uncss": "^1.0.6",
     "run-sequence": "^1.2.2"
+  },
+  "dependencies": {
+    "checklist-model": "^0.10.0"
   }
 }

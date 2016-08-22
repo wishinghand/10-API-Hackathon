@@ -5,7 +5,7 @@
         .module('app')
         .factory('GoogleAPIFactory', GoogleAPIFactory);
 
-    GoogleAPIFactory.$inject = [];
+    GoogleAPIFactory.$inject = ['APIkey'];
 
     /* @ngInject */
     function GoogleAPIFactory() {
@@ -31,19 +31,20 @@
             service = new google.maps.places.PlacesService(map);
         }
 
-        function getGooglePlaces() {
+        function getGooglePlaces(selectedTypes) {
             //perform search
-            // performSearch();
+            performSearch(selectedTypes);
         }
 
-        function setMapCenter(coord) {            
+        function setMapCenter(coord) {
             map.setCenter({lat: coord[0], lng: coord[1]});
             // The idle event is a debounced event, so we can query & listen without throwing too many requests at the server.
-            map.addListener('idle', performSearch);
+            //map.addListener('idle', performSearch);
         }
 
         // returns an array of arrays
         // representing a split into n chunks
+        // a=== array, n === number
         function splitInNChunks(a, n) {
             var chunkSize = Math.floor(a.length / n);
             var chunkStart = 0;
@@ -66,12 +67,14 @@
             return out;
         }
 
-        function performSearch() {
-            var searchTypes = getTypesToSearch();
+        function performSearch(selectedTypes) {
+            console.log(selectedTypes);
+            var searchTypes = selectedTypes;
             var requestGroups = splitInNChunks(searchTypes, 10);
             console.log(requestGroups);
             for(var i = 0; i < requestGroups.length; i++) {
                 var request = {
+                    key: APIkey.googlePlaces,
                     bounds: map.getBounds(),
                     types: requestGroups[i]
                 };
@@ -85,7 +88,7 @@
                 // };
                 service.radarSearch(request, callback);
             }
-                
+
         }
 
         // TODO: look at checkboxes to see what the user
