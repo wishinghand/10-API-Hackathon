@@ -5,13 +5,13 @@
         .module('app')
         .factory('GoogleAPIFactory', GoogleAPIFactory);
 
-    GoogleAPIFactory.$inject = ['APIkey'];
+    GoogleAPIFactory.$inject = [];
 
     /* @ngInject */
     function GoogleAPIFactory() {
         var map = {};
         var infoWindow;
-        var service;
+        var gService;
         var fun_types = ['amusement_park', 'aquarium', 'bar', 'art_gallery', 'book_store', 'campground', 'casino', 'beauty_salon', 'florist', 'movie_rental', 'movie_theater', 'museum', 'night_club', 'park', 'restaurant', 'shopping_mall', 'spa', 'stadium', 'zoo'];
         var serious_types = ['airport', 'atm', 'bank', 'car_repair', 'city_hall', 'courthouse', 'dentist', 'doctor', 'electrician', 'embassy', 'fire_station', 'gas_station', 'grocery_or_supermarket', 'gym', 'hardware_store', 'hospital', 'laundry', 'lawyer', 'library', 'locksmith', 'local_government_office', 'lodging', 'painter', 'parking', 'pharmacy', 'plumber', 'police', 'post_office', 'storage', 'train_station', 'transit_station', 'veterinary_care'];
 
@@ -28,7 +28,7 @@
             console.log(mapIn);
             map = mapIn;
             infoWindow = new google.maps.InfoWindow();
-            service = new google.maps.places.PlacesService(map);
+            gService = new google.maps.places.PlacesService(map);
         }
 
         function getGooglePlaces(selectedTypes) {
@@ -57,7 +57,12 @@
                     temp[j - chunkStart] = a[j];
                 }
                 if(i === n - 1 && a % n !== 0) {
-                    temp[chunkEnd - chunkStart] = a[chunkEnd];
+                    out.push(temp);
+                    temp = [];
+                    var remaining = a.length - chunkEnd;
+                    for(var k = chunkEnd; k < a.length; k++) {
+                        temp[k - chunkEnd] = a[k];
+                    }
                 }
                 out.push(temp);
                 chunkStart += chunkSize;
@@ -70,11 +75,10 @@
         function performSearch(selectedTypes) {
             console.log(selectedTypes);
             var searchTypes = selectedTypes;
-            var requestGroups = splitInNChunks(searchTypes, 10);
+            var requestGroups = splitInNChunks(searchTypes, 5);
             console.log(requestGroups);
             for(var i = 0; i < requestGroups.length; i++) {
                 var request = {
-                    key: APIkey.googlePlaces,
                     bounds: map.getBounds(),
                     types: requestGroups[i]
                 };
@@ -86,7 +90,7 @@
                 //     radius: 50000,
                 //     types: requestGroups[i]
                 // };
-                service.radarSearch(request, callback);
+                gService.radarSearch(request, callback);
             }
 
         }
@@ -120,7 +124,7 @@
             });
 
             google.maps.event.addListener(marker, 'click', function() {
-                service.getDetails(place, function(result, status) {
+                gService.getDetails(place, function(result, status) {
                     if (status !== google.maps.places.PlacesServiceStatus.OK) {
                         console.error(status);
                         return;
