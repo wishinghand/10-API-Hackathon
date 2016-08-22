@@ -5,7 +5,7 @@
         .module('app')
         .factory('GoogleAPIFactory', GoogleAPIFactory);
 
-    GoogleAPIFactory.$inject = [];
+    GoogleAPIFactory.$inject = ['APIkey'];
 
     /* @ngInject */
     function GoogleAPIFactory() {
@@ -31,9 +31,9 @@
             service = new google.maps.places.PlacesService(map);
         }
 
-        function getGooglePlaces() {
+        function getGooglePlaces(selectedTypes) {
             //perform search
-            // performSearch();
+            performSearch(selectedTypes);
         }
 
         function setMapCenter(coord) {            
@@ -66,12 +66,14 @@
             return out;
         }
 
-        function performSearch() {
-            var searchTypes = getTypesToSearch();
+        function performSearch(selectedTypes) {
+            console.log(selectedTypes);
+            var searchTypes = selectedTypes;
             var requestGroups = splitInNChunks(searchTypes, 10);
             console.log(requestGroups);
             for(var i = 0; i < requestGroups.length; i++) {
                 var request = {
+                    key: APIkey.googlePlaces,
                     bounds: map.getBounds(),
                     types: requestGroups[i]
                 };

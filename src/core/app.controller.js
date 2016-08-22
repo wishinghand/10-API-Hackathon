@@ -34,6 +34,8 @@
         vm.fun_types = ['amusement_park', 'aquarium', 'bar', 'art_gallery', 'book_store', 'campground', 'casino', 'beauty_salon', 'florist', 'movie_rental', 'movie_theater', 'museum', 'night_club', 'park', 'restaurant', 'shopping_mall', 'spa', 'stadium', 'zoo'];
         vm.serious_types = ['airport', 'atm', 'bank', 'car_repair', 'city_hall', 'courthouse', 'dentist', 'doctor', 'electrician', 'embassy', 'fire_station', 'gas_station', 'grocery_or_supermarket', 'gym', 'hardware_store', 'hospital', 'laundry', 'lawyer', 'library', 'locksmith', 'local_government_office', 'lodging', 'painter', 'parking', 'pharmacy', 'plumber', 'police', 'post_office', 'storage', 'train_station', 'transit_station', 'veterinary_care'];
 
+        vm.selectedTypes = angular.copy(vm.fun_types.concat(vm.serious_types));
+
         vm.headings = [
             "Happy Day that ends in 'Y'!",
             "So What's Good Around Here?",
@@ -63,7 +65,7 @@
                 navigator.geolocation.getCurrentPosition(geoSuccess);
 
             } else {
-                console.log("Your location can't be found via the browser. Please type in your address.")
+                console.log("Your location can't be found via the browser. Please type in your address.");
             }
         }
 
