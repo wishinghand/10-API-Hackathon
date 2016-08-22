@@ -16,6 +16,8 @@
         //this function sets the map on page load
         vm.setMap = setMap;
         vm.coordinates = [];
+        //ng-model from selectboxes
+        vm.typeInput;
         vm.map = {
             //default view of map
             center: { latitude: 32.7157, longitude: -117.1611 },

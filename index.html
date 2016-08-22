@@ -36,14 +36,14 @@
                     <div class="column">
                         <h2 class="content is-medium">Serious Stuff</h2>
                         <p class="control" ng-repeat="seriousThing in app.serious_types">
-                            <input type="checkbox" id="seriousThing">
+                            <input type="checkbox" id="seriousThing" ng-model="app.typeInput">
                             <label for="funThing">{{seriousThing.split("_").join(" ")}}</label>
                         </p>
                     </div>
                     <div class="column">
                         <h2 class="content is-medium">Fun Stuff</h2>
                         <p class="control" ng-repeat="funThing in app.fun_types">
-                            <input type="checkbox" id="funThing">
+                            <input type="checkbox" id="funThing" ng-model="app.typeInput">
                             <label for="funThing">{{funThing.split("_").join(" ")}}</label>
                         </p>
                     </div>
