@@ -9,7 +9,7 @@
 
     /* @ngInject */
     function GoogleAPIFactory() {
-        var map = {}; // the actual GMap will be in map.getGMap()
+        var map = {};
         var infoWindow;
         var service;
         var fun_types = ['amusement_park', 'aquarium', 'bar', 'art_gallery', 'book_store', 'campground', 'casino', 'beauty_salon', 'florist', 'movie_rental', 'movie_theater', 'museum', 'night_club', 'park', 'restaurant', 'shopping_mall', 'spa', 'stadium', 'zoo'];
@@ -25,7 +25,7 @@
 
         ////////////////
         function setMap(mapIn) {
-            console.log(mapIn.getBounds());
+            console.log(mapIn);
             map = mapIn;
             infoWindow = new google.maps.InfoWindow();
             service = new google.maps.places.PlacesService(map);
@@ -42,43 +42,50 @@
             map.addListener('idle', performSearch);
         }
 
+        // returns an array of arrays
+        // representing a split into n chunks
+        function splitInNChunks(a, n) {
+            var chunkSize = Math.floor(a.length / n);
+            var chunkStart = 0;
+            var chunkEnd = chunkStart + chunkSize;
+            var out = [];
+            var temp;
+            for(var i = 0; i < n; i++) {
+                temp = [];
+                for(var j = chunkStart; j < chunkEnd; j++) {
+                    temp[j - chunkStart] = a[j];
+                }
+                if(i === n - 1 && a % n !== 0) {
+                    temp[chunkEnd - chunkStart] = a[chunkEnd];
+                }
+                out.push(temp);
+                chunkStart += chunkSize;
+                chunkEnd += chunkSize;
+            }
 
-        // function getMapCenter(coord) {
-        //     if (coord) {
-        //         return {
-        //             // investigate { lat: coord[0], lng: coord[1]}
-        //             center: new google.maps.LatLng(coord[0], coord[1]),
-        //             zoom: 15,
-        //             styles: [{
-        //                 stylers: [{ visibility: 'simplified' }]
-        //             }, {
-        //                 elementType: 'labels',
-        //                 stylers: [{ visibility: 'off' }]
-        //             }],
-        //             scrollwheel: false
-        //         };
-        //     } else {
-        //         return {
-        //             center: { lat: -32.7157, lng: 117.1611 },
-        //             zoom: 15,
-        //             styles: [{
-        //                 stylers: [{ visibility: 'simplified' }]
-        //             }, {
-        //                 elementType: 'labels',
-        //                 stylers: [{ visibility: 'off' }]
-        //             }],
-        //             scrollwheel: false
-        //         };
-        //     }
-        // }
+            return out;
+        }
 
         function performSearch() {
             var searchTypes = getTypesToSearch();
-            var request = {
-                bounds: map.getBounds(),
-                types: searchTypes
-            };
-            service.radarSearch(request, callback);
+            var requestGroups = splitInNChunks(searchTypes, 10);
+            console.log(requestGroups);
+            for(var i = 0; i < requestGroups.length; i++) {
+                var request = {
+                    bounds: map.getBounds(),
+                    types: requestGroups[i]
+                };
+                // var request = {
+                //     location: {
+                //         lat: map.center.lat(),
+                //         lng: map.center.lng()
+                //     },
+                //     radius: 50000,
+                //     types: requestGroups[i]
+                // };
+                service.radarSearch(request, callback);
+            }
+                
         }
 
         // TODO: look at checkboxes to see what the user
@@ -88,6 +95,7 @@
         }
 
         function callback(results, status) {
+            console.log(results);
             if (status !== google.maps.places.PlacesServiceStatus.OK) {
                 console.error(status);
                 return;
@@ -120,4 +128,34 @@
             });
         }
     }
+
+    // function getMapCenter(coord) {
+        //     if (coord) {
+        //         return {
+        //             // investigate { lat: coord[0], lng: coord[1]}
+        //             center: new google.maps.LatLng(coord[0], coord[1]),
+        //             zoom: 15,
+        //             styles: [{
+        //                 stylers: [{ visibility: 'simplified' }]
+        //             }, {
+        //                 elementType: 'labels',
+        //                 stylers: [{ visibility: 'off' }]
+        //             }],
+        //             scrollwheel: false
+        //         };
+        //     } else {
+        //         return {
+        //             center: { lat: -32.7157, lng: 117.1611 },
+        //             zoom: 15,
+        //             styles: [{
+        //                 stylers: [{ visibility: 'simplified' }]
+        //             }, {
+        //                 elementType: 'labels',
+        //                 stylers: [{ visibility: 'off' }]
+        //             }],
+        //             scrollwheel: false
+        //         };
+        //     }
+        // }
 })();
+
