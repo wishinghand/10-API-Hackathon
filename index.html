@@ -51,7 +51,7 @@
                     <div class="column">
                         <h2 class="content is-medium">Serious Stuff</h2>
                         <p class="control" ng-repeat="seriousThing in app.serious_types">
-                            <input type="checkbox" id="seriousThing" checklist-model="app.selectedTypes" checklist-value="seriousThing" checked>
+                            <input type="checkbox" id="seriousThing" checklist-model="app.selectedTypes" checklist-value="seriousThing">
                             <label for="seriousThing">{{seriousThing.split("_").join(" ")}}</label>
                         </p>
                     </div>
