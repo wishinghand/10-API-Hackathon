@@ -17,73 +17,85 @@
     </script>
 </head>
 
-<body ng-controller="appCtrl as app" >
+<body ng-controller="appCtrl as app">
     <div class="se-pre-con" ng-show="app.loading"></div>
     <div ng-hide="app.loading">
-        <main>
-            <div class="box">
-                <strong><h1 class="content heading is-medium ng-cloak" ng-cloak>{{app.headingText}}</h1></strong>
-                <i ng-click="settings = !settings" ng-hide="settings" class="icon fa fa-bars"></i>
-                <i ng-click="settings = !settings" ng-show="settings" class="icon fa fa-times-circle"></i>
-            </div>
-        </main>
-        <div ng-show="settings" class="box add-margin">
-            <form>
-            	<i class="icon fa fa-cogs is-large light-grey"></i>
-                <strong><h1 class="content is-large">Settings</h1></strong>
-                <h2 class="content">Select which types of places you would like to see...</h2>
-                <div class="columns">
-                    <div class="column">
-                        <h2 class="content is-medium">Serious Stuff</h2>
-                        <p class="control" ng-repeat="seriousThing in app.serious_types">
-                            <input type="checkbox" id="seriousThing">
-                            <label for="funThing">{{seriousThing.split("_").join(" ")}}</label>
-                        </p>
-                    </div>
-                    <div class="column">
-                        <h2 class="content is-medium">Fun Stuff</h2>
-                        <p class="control" ng-repeat="funThing in app.fun_types">
-                            <input type="checkbox" id="funThing">
-                            <label for="funThing">{{funThing.split("_").join(" ")}}</label>
-                        </p>
-                    </div>
-                    <div class="column">
-                        <h2 class="content">Select a search radius (meters)...</h2>
-                        <p class="control select">
-                            <select class="is-medium" type="text" placeholder="50000 Meters">
-                                <option value="5">10</option>
-                                <option value="50">100</option>
-                                <option value="50">1000</option>
-                                <option value="50">10000</option>
-                                <option value="50">25000</option>
-                                <option value="50">50000</option>
-                            </select>
-                        </p>
-                    </div>
+    </div>
+    <main>
+        <div class="box columns">
+            
+                <div class="column">
+                <strong><h1 class="content heading ng-cloak is-medium" ng-cloak>
+				{{app.headingText}}</h1></strong>
                 </div>
-            </form>
+
+                
+				<form>
+                <div style="width: 50rem;" class="control is-grouped settings column" ng-controller="addressInputCtrl as search">
+                    <p class="control is-expanded">
+                        <input class="input is-expanded" type="text" ng-model="search.addressInput" placeholder="Address" g-places-autocomplete autofocus>
+                    </p>
+                    <p class="control">
+                        <button class="button is-primary" ng-click="search.searchForThingsToDo()">Search</button>
+                    </p>
+				</div>
+				</form>
+
+
+				<div class="column">
+                <i ng-click="settings = !settings" ng-hide="settings" class="icon fa fa-bars settings"></i>
+                <i ng-click="settings = !settings" ng-show="settings" class="icon fa fa-times-circle settings"></i>
+            	</div>
+
         </div>
-        <div class="box add-margin" ng-controller="addressInputCtrl as search">
-            <form class="control is-grouped">
-                <p class="control is-expanded">
-                    <input class="input is-medium" type="text" ng-model="search.addressInput" placeholder="Address" g-places-autocomplete autofocus>
-                </p>
-                <p class="control">
-                    <button class="button is-primary is-medium" ng-click="search.searchForThingsToDo()">Search</button>
-                </p>
-            </form>
-        </div>
-        <ui-gmap-google-map id="map" center='app.map.center' zoom='app.map.zoom' class="box add-margin angular-google-map-container" options="app.map.options" control="app.map.control"></ui-gmap-google-map>
-        <footer class="footer">
-            <div class="content has-text-centered">
-                <strong>
+    </main>
+    <div ng-show="settings" class="box add-margin">
+        <form>
+            <i class="icon fa fa-cogs is-large light-grey"></i>
+            <strong><h1 class="content is-large">Settings</h1></strong>
+            <h2 class="content">Select which types of places you would like to see...</h2>
+            <div class="columns">
+                <div class="column">
+                    <h2 class="content is-medium">Serious Stuff</h2>
+                    <p class="control" ng-repeat="seriousThing in app.serious_types">
+                        <input type="checkbox" id="seriousThing">
+                        <label for="funThing">{{seriousThing.split("_").join(" ")}}</label>
+                    </p>
+                </div>
+                <div class="column">
+                    <h2 class="content is-medium">Fun Stuff</h2>
+                    <p class="control" ng-repeat="funThing in app.fun_types">
+                        <input type="checkbox" id="funThing">
+                        <label for="funThing">{{funThing.split("_").join(" ")}}</label>
+                    </p>
+                </div>
+                <div class="column">
+                    <h2 class="content">Select a search radius (meters)...</h2>
+                    <p class="control select">
+                        <select class="is-medium" type="text" placeholder="50000 Meters">
+                            <option value="5">10</option>
+                            <option value="50">100</option>
+                            <option value="50">1000</option>
+                            <option value="50">10000</option>
+                            <option value="50">25000</option>
+                            <option value="50">50000</option>
+                        </select>
+                    </p>
+                </div>
+            </div>
+        </form>
+    </div>
+    <ui-gmap-google-map id="map" center='app.map.center' zoom='app.map.zoom' class="box add-margin angular-google-map-container" options="app.map.options" control="app.map.control"></ui-gmap-google-map>
+    <footer class="footer">
+        <div class="content has-text-centered">
+            <strong>
                 <a href='https://github.com/wishinghand/10-API-Hackathon.git'>What’s Up?</a>
             </strong> was created by
-                <a href="http://qobbler.com">Jason Land</a>,
-                <a href="https://github.com/comrww">Ryan Wilson</a>, and
-                <a href="https://github.com/rdowdy">Ryan Dowdy.</a>
-            </div>
-        </footer>
+            <a href="http://qobbler.com">Jason Land</a>,
+            <a href="https://github.com/comrww">Ryan Wilson</a>, and
+            <a href="https://github.com/rdowdy">Ryan Dowdy.</a>
+        </div>
+    </footer>
     </div>
     <script src="https://maps.googleapis.com/maps/api/js?libraries=places"></script>
     <!-- inject:js -->

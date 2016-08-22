@@ -3,13 +3,17 @@
 } */
 
 .angular-google-map-container { 
-	height: 40.5em;
+	height: 45em;
 	padding: 0.3em;
 }
 
 
 .inline-block {
     display: inline-block !important;
+}
+
+.inline {
+	display: inline;
 }
 
 .box h1.heading {
@@ -52,4 +56,9 @@
 
 .light-grey {
 	color: lightgrey;
+}
+
+.settings {
+	justify-content: right;
+    text-align: right;
 }
