@@ -39,7 +39,7 @@
         function setMapCenter(coord) {            
             map.setCenter({lat: coord[0], lng: coord[1]});
             // The idle event is a debounced event, so we can query & listen without throwing too many requests at the server.
-            map.addListener('idle', performSearch);
+            //map.addListener('idle', performSearch);
         }
 
         // returns an array of arrays
