@@ -36,14 +36,14 @@
                     <div class="column">
                         <h2 class="content is-medium">Serious Stuff</h2>
                         <p class="control" ng-repeat="seriousThing in app.serious_types">
-                            <input type="checkbox" id="seriousThing" ng-model="app.typeInput">
-                            <label for="funThing">{{seriousThing.split("_").join(" ")}}</label>
+                            <input type="checkbox" id="seriousThing" checklist-model="app.selectedTypes" checklist-value="seriousThing" checked>
+                            <label for="seriousThing">{{seriousThing.split("_").join(" ")}}</label>
                         </p>
                     </div>
                     <div class="column">
                         <h2 class="content is-medium">Fun Stuff</h2>
                         <p class="control" ng-repeat="funThing in app.fun_types">
-                            <input type="checkbox" id="funThing" ng-model="app.typeInput">
+                            <input type="checkbox" id="funThing" checklist-model="app.selectedTypes" checklist-value="funThing" checked>
                             <label for="funThing">{{funThing.split("_").join(" ")}}</label>
                         </p>
                     </div>
@@ -69,7 +69,7 @@
                     <input class="input is-medium" type="text" ng-model="search.addressInput" placeholder="Address" g-places-autocomplete autofocus>
                 </p>
                 <p class="control">
-                    <button class="button is-primary is-medium" ng-click="search.searchForThingsToDo()">Search</button>
+                    <button class="button is-primary is-medium" ng-click="search.searchForThingsToDo(app.selectedTypes)">Search</button>
                 </p>
             </form>
         </div>
@@ -89,6 +89,7 @@
     <!-- inject:js -->
     <script src="src/core/lodash.min.js"></script>
     <script src="node_modules/angular/angular.js"></script>
+    <script src="node_modules/checklist-model/checklist-model.js"></script>
     <script src="src/core/angular-simple-logger.js"></script>
     <script src="src/core/angular-google-maps.js"></script>
     <script src="src/core/app.module.js"></script>
