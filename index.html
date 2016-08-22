@@ -36,8 +36,13 @@
                     <div class="column">
                         <h2 class="content is-medium">Serious Stuff</h2>
                         <p class="control" ng-repeat="seriousThing in app.serious_types">
+<<<<<<< HEAD
                             <input type="checkbox" id="seriousThing" checked checklist-model="app.selectedTypes" checklist-value="seriousThing">
                             <label for="seriousThing">{{seriousThing.split("_").join(" ")}}</label>
+=======
+                            <input type="checkbox" id="seriousThing" ng-model="app.typeInput">
+                            <label for="funThing">{{seriousThing.split("_").join(" ")}}</label>
+>>>>>>> 4b914209546e4c8112d47487e9170915462c678f
                         </p>
                     </div>
                     <div class="column">

@@ -36,7 +36,7 @@
             performSearch(selectedTypes);
         }
 
-        function setMapCenter(coord) {            
+        function setMapCenter(coord) {
             map.setCenter({lat: coord[0], lng: coord[1]});
             // The idle event is a debounced event, so we can query & listen without throwing too many requests at the server.
             //map.addListener('idle', performSearch);
@@ -44,6 +44,7 @@
 
         // returns an array of arrays
         // representing a split into n chunks
+        // a=== array, n === number
         function splitInNChunks(a, n) {
             var chunkSize = Math.floor(a.length / n);
             var chunkStart = 0;
@@ -87,7 +88,7 @@
                 // };
                 service.radarSearch(request, callback);
             }
-                
+
         }
 
         // TODO: look at checkboxes to see what the user
