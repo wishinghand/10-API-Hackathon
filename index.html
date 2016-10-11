@@ -21,13 +21,13 @@
     <div class="se-pre-con" ng-show="app.loading"></div>
     <div ng-hide="app.loading">
         <main>
-            <div class="box columns">
+            <div class="box columns" style="height: 5rem;">
                 <div class="column">
                     <strong><h1 class="content heading ng-cloak is-medium" ng-cloak>
                 {{app.headingText}}</h1></strong>
                 </div>
                 <form>
-                    <div style="width: 50rem;" class="control is-grouped settings column" ng-controller="addressInputCtrl as search">
+                    <div style="width: 50rem;" class="control is-grouped settings column" style="padding-top: 1px !important;" ng-controller="addressInputCtrl as search">
                         <p class="control is-expanded">
                             <input class="input is-expanded" type="text" ng-model="search.addressInput" placeholder="Address" g-places-autocomplete autofocus>
                         </p>
