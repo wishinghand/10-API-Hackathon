@@ -1,5 +1,5 @@
-# Project 10: What's Around Me?
-## Make an API based website using Angular
+# What's Around Me?
+## Prompt: Make an API based website using Angular
 ### Technologies used:
 
 - HTML
