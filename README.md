@@ -1,5 +1,7 @@
 # What's Around Me?
+
 > Prompt: Make an API based website using Angular
+
 ## Technologies used
 
 - HTML
